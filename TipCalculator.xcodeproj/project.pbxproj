@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0551E651E235A6A0042E14E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0551E641E235A6A0042E14E /* SettingsViewController.swift */; };
 		D0B0BA811E1F8C8B004889BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0BA801E1F8C8B004889BB /* AppDelegate.swift */; };
 		D0B0BA831E1F8C8B004889BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0BA821E1F8C8B004889BB /* ViewController.swift */; };
 		D0B0BA861E1F8C8B004889BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B0BA841E1F8C8B004889BB /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0551E641E235A6A0042E14E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D0B0BA7D1E1F8C8B004889BB /* TipCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B0BA801E1F8C8B004889BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B0BA821E1F8C8B004889BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				D0B0BA801E1F8C8B004889BB /* AppDelegate.swift */,
 				D0B0BA821E1F8C8B004889BB /* ViewController.swift */,
 				D0B0BA841E1F8C8B004889BB /* Main.storyboard */,
+				D0551E641E235A6A0042E14E /* SettingsViewController.swift */,
 				D0B0BA871E1F8C8B004889BB /* Assets.xcassets */,
 				D0B0BA891E1F8C8B004889BB /* LaunchScreen.storyboard */,
 				D0B0BA8C1E1F8C8B004889BB /* Info.plist */,
@@ -91,12 +94,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Derek Vallar";
 				TargetAttributes = {
 					D0B0BA7C1E1F8C8B004889BB = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 4SWT652875;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -139,6 +143,7 @@
 			files = (
 				D0B0BA831E1F8C8B004889BB /* ViewController.swift in Sources */,
 				D0B0BA811E1F8C8B004889BB /* AppDelegate.swift in Sources */,
+				D0551E651E235A6A0042E14E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +187,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -232,6 +238,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -302,6 +309,7 @@
 				D0B0BA911E1F8C8B004889BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
