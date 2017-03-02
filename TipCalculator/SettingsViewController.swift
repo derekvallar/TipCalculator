@@ -10,17 +10,22 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var lastOptionSwitch: UISwitch!
+    let defaultSegmentKey = "DEFAULT_SEGMENT_KEY"
+    let backColor = UIColor(red: 150/255.0, green: 1.0, blue: 1.0, alpha: 1.0)
+
     @IBOutlet weak var segmentView: UISegmentedControl!
+
+    @IBAction func optionChanged(_ sender: UISegmentedControl) {
+        let defaults = UserDefaults.standard
+        defaults.set(sender.selectedSegmentIndex, forKey: defaultSegmentKey)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    }
+        let defaults = UserDefaults.standard
+        segmentView.selectedSegmentIndex = defaults.integer(forKey: defaultSegmentKey)
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.navigationController?.navigationBar.tintColor = backColor
     }
-
 }
