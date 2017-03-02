@@ -15,24 +15,12 @@ class ViewController: UIViewController {
 
     let EMPTY_VALUE: Float = 0.0
     let VARIABLE_SEGMENT_INDEX = 3
+    var formatter = NumberFormatter()
 
     var firstOpen = true
     var variableSegmentSelected = false
     var tipOptions: [Float] = [0.15, 0.2, 0.25, 0.3]
     var personCount = 2
-
-    var bill: Float {
-        get {
-            let input = billField.text!
-
-            if !input.isEmpty {
-                if let value = Float(input) {
-                    return value
-                }
-            }
-            return EMPTY_VALUE
-        }
-    }
 
     @IBOutlet weak var allStackView: UIStackView!
     @IBOutlet weak var totalView: UIView!
@@ -116,20 +104,36 @@ class ViewController: UIViewController {
     }
 
     func updateResults() {
+
+        var bill: Float
+        let input = billField.text!
+
+        formatter.numberStyle = .decimal
+        if !input.isEmpty, let value = formatter.number(from: input) {
+            bill = value.floatValue
+        }
+        else {
+            bill = EMPTY_VALUE
+        }
+
+        
         let tipPercentage = tipOptions[tipPercentageSegment.selectedSegmentIndex]
-        let tipTotal = bill * tipPercentage
-        let total = bill + tipTotal
+        let billValue = bill
+        let tipTotal = billValue * tipPercentage
+        let total = billValue + tipTotal
 
-        tipLabel.text = String(format: "$ %.2f", tipTotal)
-        totalLabel.text = String(format: "$ %.2f", total)
+        formatter.numberStyle = .currency
+        tipLabel.text = formatter.string(from: NSNumber(value: tipTotal))
+        totalLabel.text = formatter.string(from: NSNumber(value: total))
 
-        tipPerPersonLabel.text = String(format: "$ %.2f", tipTotal / Float(personCount))
-        variableTotalPerPersonLabel.text = String(format: "$ %.2f", total / Float(personCount))
+        tipPerPersonLabel.text = formatter.string(from: NSNumber(value: tipTotal / Float(personCount)))
+        variableTotalPerPersonLabel.text = formatter.string(from: NSNumber(value: total / Float(personCount)))
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view did load")
 
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
@@ -140,11 +144,33 @@ class ViewController: UIViewController {
 
         billField.becomeFirstResponder()
 
+        billField.placeholder = formatter.currencySymbol
+
         let defaults = UserDefaults.standard
         tipOptions[VARIABLE_SEGMENT_INDEX] = defaults.float(forKey: tipValueKey)
-        tipSlider.value = tipOptions[VARIABLE_SEGMENT_INDEX]
+        tipSlider.value = tipOptions[VARIABLE_SEGMENT_INDEX] * 100
         tipPercentageSegment.selectedSegmentIndex = defaults.integer(forKey: defaultSegmentKey)
         tipPercentageSegment.sendActions(for: .valueChanged)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view will appear")
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did appear")
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("view will disappear")
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("view did disappear")
     }
 
     func keyboardWillShow(_ notification: Notification) {
@@ -166,12 +192,13 @@ class ViewController: UIViewController {
 
             totalView.isHidden = false
             billFieldHeight.isActive = false
+            totalViewHeight.constant = keyboardHeight! * 5 / 3
             totalViewHeight.isActive = true
 
-            totalViewHeight.constant = keyboardHeight! * 5 / 3
             UIView.animate(withDuration: 1.0, animations: {
                 self.allStackView.layoutIfNeeded()
             })
+
         }
     }
 }

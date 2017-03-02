@@ -34,7 +34,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDT-PY-A4h" userLabel="Bill Field View">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="300"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" textAlignment="right" minimumFontSize="42" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0xj-or-IjD">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="42" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0xj-or-IjD">
                                                                 <rect key="frame" x="0.0" y="114" width="335" height="72"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="textColor" red="0.58823529409999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -222,7 +222,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="335" id="EmJ-sn-18u"/>
+                                            <constraint firstAttribute="height" priority="999" constant="335" id="EmJ-sn-18u"/>
                                             <constraint firstItem="c0R-cu-UlS" firstAttribute="top" secondItem="W8c-H6-Fmv" secondAttribute="top" id="Fnc-ha-jEy"/>
                                             <constraint firstAttribute="bottom" secondItem="c0R-cu-UlS" secondAttribute="bottom" id="VZq-ai-bos"/>
                                             <constraint firstAttribute="trailing" secondItem="c0R-cu-UlS" secondAttribute="trailing" constant="20" id="ouI-QN-Swz"/>
@@ -280,7 +280,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="959" y="139"/>
+            <point key="canvasLocation" x="957.60000000000002" y="138.98050974512745"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="q3K-Jw-Muf">
