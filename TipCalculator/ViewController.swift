@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     let tipValueKey = "TIP_VALUE_KEY"
     let defaultSegmentKey = "DEFAULT_SEGMENT_KEY"
+    let darkModeKey = "DARK_MODE_KEY"
 
     let EMPTY_VALUE: Float = 0.0
     let VARIABLE_SEGMENT_INDEX = 3
@@ -22,7 +23,11 @@ class ViewController: UIViewController {
     var tipOptions: [Float] = [0.15, 0.2, 0.25, 0.3]
     var personCount = 2
 
+
+    @IBOutlet var mainView: UIView!
+    @IBOutlet weak var topInputView: UIView!
     @IBOutlet weak var allStackView: UIStackView!
+
     @IBOutlet weak var totalView: UIView!
     @IBOutlet weak var totalViewHeight: NSLayoutConstraint!
     @IBOutlet weak var billFieldHeight: NSLayoutConstraint!
@@ -40,7 +45,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var personSlider: UISlider!
     @IBOutlet weak var tipPerPersonLabel: UILabel!
     @IBOutlet weak var variableTotalPerPersonLabel: UILabel!
-
 
     @IBAction func onTapMainView(_ sender: Any) {
         view.endEditing(true)
@@ -74,7 +78,6 @@ class ViewController: UIViewController {
                 variableSegmentSelected = false
             }
         }
-
         updateResults()
     }
 
@@ -116,7 +119,6 @@ class ViewController: UIViewController {
             bill = EMPTY_VALUE
         }
 
-        
         let tipPercentage = tipOptions[tipPercentageSegment.selectedSegmentIndex]
         let billValue = bill
         let tipTotal = billValue * tipPercentage
@@ -129,7 +131,6 @@ class ViewController: UIViewController {
         tipPerPersonLabel.text = formatter.string(from: NSNumber(value: tipTotal / Float(personCount)))
         variableTotalPerPersonLabel.text = formatter.string(from: NSNumber(value: total / Float(personCount)))
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,6 +157,19 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("view will appear")
+
+        let defaults = UserDefaults.standard
+
+        if defaults.bool(forKey: darkModeKey) {
+            navigationController?.navigationBar.barTintColor = UIColor(red: 0.0, green: 89/255.0, blue: 139/255.0, alpha: 1.0)
+            topInputView.backgroundColor = UIColor(red: 0.0, green: 89/255.0, blue: 139/255.0, alpha: 1.0)
+            mainView.backgroundColor = UIColor(red: 0.0, green: 71/255.0, blue: 94/255.0, alpha: 1.0)
+        }
+        else {
+            navigationController?.navigationBar.barTintColor = UIColor(red: 0.0, green: 190/255.0, blue: 1.0, alpha: 1.0)
+            topInputView.backgroundColor = UIColor(red: 0.0, green: 190/255.0, blue: 1.0, alpha: 1.0)
+            mainView.backgroundColor = UIColor(red: 0.0, green: 135/255.0, blue: 188/255.0, alpha: 1.0)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
