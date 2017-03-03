@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     let tipValueKey = "TIP_VALUE_KEY"
     let defaultSegmentKey = "DEFAULT_SEGMENT_KEY"
     let darkModeKey = "DARK_MODE_KEY"
+    let billFieldKey = "BILL_FIELD_KEY"
+    let savedDateKey = "SAVED_DATE_KEY"
 
     let EMPTY_VALUE: Float = 0.0
     let VARIABLE_SEGMENT_INDEX = 3
@@ -144,7 +146,6 @@ class ViewController: UIViewController {
         }
 
         billField.becomeFirstResponder()
-
         billField.placeholder = formatter.currencySymbol
 
         let defaults = UserDefaults.standard
@@ -152,6 +153,18 @@ class ViewController: UIViewController {
         tipSlider.value = tipOptions[VARIABLE_SEGMENT_INDEX] * 100
         tipPercentageSegment.selectedSegmentIndex = defaults.integer(forKey: defaultSegmentKey)
         tipPercentageSegment.sendActions(for: .valueChanged)
+
+        if let savedDate = defaults.object(forKey: savedDateKey) {
+            print("Found Saved Date: \(savedDate)")
+            print("Time elapsed: \((savedDate as! Date).timeIntervalSinceNow * -1)")
+
+            if (savedDate as! Date).timeIntervalSinceNow * -1 > 600.0 {
+                billField.text = ""
+            }
+            else {
+                billField.text = defaults.object(forKey: billFieldKey) as! String?
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -180,6 +193,12 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("view will disappear")
+
+        let defaults = UserDefaults.standard
+
+        print("Saved Date: \(Date.init())")
+        defaults.set(Date.init(), forKey: savedDateKey)
+        defaults.set(billField.text, forKey: billFieldKey)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
