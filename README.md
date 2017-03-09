@@ -3,6 +3,7 @@
 This is a Tip Calculator iOS application created as a submission piece for CodePath's iOS Bootcamp. It was fun (and frustrating) to create this app!
 
 Submitted by: Derek Vallar
+
 Time Spent: 20 hours
 
 ## User Stories
