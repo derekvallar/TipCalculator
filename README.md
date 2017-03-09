@@ -11,6 +11,10 @@ This is a Tip Calculator iOS application created as a submission piece for CodeP
 - Dark theme
 - Animations~!
 
+### Tested On
+- Simulator: iPhone 5, 6, 7
+- Real: iPhone 5
+
 ### Demo
 ![alt text](https://github.com/derekvallar/TipCalculator/blob/master/AppDemo.gif "TipCalculator Demo")
 
